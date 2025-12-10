@@ -4792,7 +4792,6 @@ DEFAULT_TICKET_CATEGORIES = [
     {"label": "🛒 Satın Alma", "value": "satin_alma", "description": "Ürün satın alma ile ilgili sorular"},
     {"label": "🔧 Teknik Destek", "value": "teknik_destek", "description": "Teknik sorunlar ve hatalar"},
     {"label": "💬 Genel Soru", "value": "genel_soru", "description": "Genel sorular ve bilgi alma"},
-    {"label": "🎁 Etkinlik/Çekiliş", "value": "etkinlik", "description": "Etkinlik ve çekiliş talepleri"},
     {"label": "📝 Diğer", "value": "diger", "description": "Diğer konular"}
 ]
 
@@ -4940,14 +4939,84 @@ class TicketButton(discord.ui.Button):
                 await interaction.response.send_message(f"❌ Zaten açık bir ticket'ınız var! <#{ticket_data['channel_id']}>", ephemeral=True)
                 return
         
-        # Kategori seçim menüsünü göster
-        embed = discord.Embed(
-            title="📂 Kategori Seçin",
-            description="Lütfen ticket'ınız için bir kategori seçin:",
-            color=0x3498db
-        )
-        view = TicketCategorySelectView()
-        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
+        # Direkt ticket aç - kategori seçimi yok
+        TICKET_SETTINGS[guild_id]["ticket_count"] = TICKET_SETTINGS[guild_id].get("ticket_count", 0) + 1
+        ticket_number = TICKET_SETTINGS[guild_id]["ticket_count"]
+        save_ticket_settings()
+        
+        support_role = interaction.guild.get_role(TICKET_SETTINGS[guild_id]["support_role"])
+        
+        overwrites = {
+            interaction.guild.default_role: discord.PermissionOverwrite(view_channel=False),
+            interaction.user: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True),
+            interaction.guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True, manage_channels=True)
+        }
+        
+        if support_role:
+            overwrites[support_role] = discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
+        
+        try:
+            panel_category_id = TICKET_SETTINGS[guild_id].get("panel_category_id")
+            category = None
+            if panel_category_id:
+                category = interaction.guild.get_channel(panel_category_id)
+            
+            channel = await interaction.guild.create_text_channel(
+                name=f"ticket-{ticket_number}",
+                overwrites=overwrites,
+                category=category,
+                reason=f"Ticket açıldı: {interaction.user.name}"
+            )
+            
+            TICKETS[str(channel.id)] = {
+                "ticket_number": ticket_number,
+                "user_id": user_id,
+                "user_name": interaction.user.name,
+                "guild_id": guild_id,
+                "channel_id": channel.id,
+                "subject": "Destek Talebi",
+                "status": "open",
+                "created_at": datetime.datetime.now().isoformat()
+            }
+            save_tickets()
+            
+            close_view = TicketCloseView()
+            
+            welcome_embed = discord.Embed(
+                title=f"🎫 Ticket #{ticket_number}",
+                description=f"Merhaba {interaction.user.mention}!\n\nDestek talebiniz oluşturuldu. Lütfen sorununuzu açıklayın, bir yetkili en kısa sürede size yardımcı olacaktır.",
+                color=0x3498db,
+                timestamp=datetime.datetime.now()
+            )
+            welcome_embed.add_field(name="👤 Açan", value=interaction.user.mention, inline=True)
+            welcome_embed.add_field(name="📅 Tarih", value=f"<t:{int(datetime.datetime.now().timestamp())}:F>", inline=True)
+            welcome_embed.add_field(name="❌ Kapatmak İçin", value="Aşağıdaki butona tıkla veya `!ticketkapat` yaz", inline=False)
+            welcome_embed.set_thumbnail(url=interaction.user.display_avatar.url)
+            welcome_embed.set_footer(text="DEHŞET Ticket Sistemi")
+            
+            await channel.send(content=f"{interaction.user.mention} {support_role.mention if support_role else ''}", embed=welcome_embed, view=close_view)
+            
+            await interaction.response.send_message(f"✅ Ticket'ınız oluşturuldu! {channel.mention}", ephemeral=True)
+            
+            log_channel_id = TICKET_SETTINGS[guild_id].get("log_channel")
+            if log_channel_id:
+                log_channel = bot.get_channel(log_channel_id)
+                if log_channel:
+                    log_embed = discord.Embed(
+                        title="🎫 YENİ TICKET AÇILDI",
+                        color=0x00ff00,
+                        timestamp=datetime.datetime.now()
+                    )
+                    log_embed.add_field(name="👤 Açan", value=f"{interaction.user.mention} (`{interaction.user.id}`)", inline=True)
+                    log_embed.add_field(name="🎫 Ticket", value=channel.mention, inline=True)
+                    log_embed.set_thumbnail(url=interaction.user.display_avatar.url)
+                    log_embed.set_footer(text=f"Ticket #{ticket_number}")
+                    await log_channel.send(embed=log_embed)
+            
+        except discord.Forbidden:
+            await interaction.response.send_message("❌ Kanal oluşturma yetkim yok!", ephemeral=True)
+        except Exception as e:
+            await interaction.response.send_message(f"❌ Hata: {e}", ephemeral=True)
 
 class TicketCloseButton(discord.ui.Button):
     def __init__(self):
@@ -5061,13 +5130,7 @@ async def ticket_panel(ctx):
         title="🎫 DESTEK TALEBİ",
         description=(
             "Yardıma mı ihtiyacınız var?\n\n"
-            "Aşağıdaki butona tıklayarak bir kategori seçip ticket açabilirsiniz!\n\n"
-            "**📂 Kategoriler:**\n"
-            "• 🛒 Satın Alma\n"
-            "• 🔧 Teknik Destek\n"
-            "• 💬 Genel Soru\n"
-            "• 🎁 Etkinlik/Çekiliş\n"
-            "• 📝 Diğer\n\n"
+            "Aşağıdaki butona tıklayarak destek talebi oluşturabilirsiniz!\n\n"
             "**📌 Kurallar:**\n"
             "• Gereksiz ticket açmayın\n"
             "• İsteğinizi detaylı açıklayın\n"
