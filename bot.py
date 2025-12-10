@@ -43,7 +43,7 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', intents=intents, help_command=None)
 
-OWNER_IDS = [1105504114609233970, 1418921133083988099]
+OWNER_IDS = [1105504114609233970, 1418921133083988099, 1080183994949312613]
 AUTHORIZED_USERS_FILE = 'authorized_users.json'
 VERIFIED_USERS_FILE = 'verified_users.json'
 DB_FILE_PATH = 'discord_data.db'
